@@ -8,5 +8,6 @@ Vagrant.configure("2") do |config|
         vb.cpus = "4"
       end
     end
-    config.vm.provision "shell", path: "./k3s_conf/setup.sh"
+    config.vm.provision "shell", run: "once", path: "./k3s_conf/setup.sh"   # run in first time (or with --provision flag)
+    config.vm.provision "shell", run: "always", path: "./k3s_conf/deploy.sh"
   end
