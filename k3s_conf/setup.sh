@@ -18,7 +18,10 @@ sudo usermod -aG docker vagrant
 sudo systemctl enable docker
 
 logger "Installing k3s"
-curl -sfL https://get.k3s.io | sh -
+
+#curl -sfL https://get.k3s.io | sh -
+curl -sfL https://get.k3s.io | sh -s - --docker # Uning docker engine (usefull if you want to use local docker images, not from hubs)
+
 # Retrieve the cluster kubeconfig file
 sudo cp /etc/rancher/k3s/k3s.yaml /home/vagrant/config
 sudo chown vagrant:vagrant /home/vagrant/config
