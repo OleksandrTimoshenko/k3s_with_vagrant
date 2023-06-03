@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 
+MY_HOST = "192.168.56.11"
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,7 +27,7 @@ SECRET_KEY = 'django-insecure-0ff#deum+_mve=8a(=j=13lepy=0xzay9u@g5yij9$cdag*8y5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.56.11']
+ALLOWED_HOSTS = [MY_HOST, "127.0.0.1"] + [f'10.42.0.{i}' for i in range(1, 51)]
 
 
 # Application definition
@@ -73,13 +75,25 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# django_project/settings.py
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "your_database_name",
+        "USER": "your_username",
+        "PASSWORD": "your_password",
+        "HOST": MY_HOST,  # set in docker-compose.yml
+        "PORT": 5432,  # default postgres port
     }
 }
 
+#DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#    }
+#}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
