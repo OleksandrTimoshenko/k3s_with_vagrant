@@ -1,10 +1,11 @@
 # How to setup it?
 
 ```
+cp ./k3s_conf/database.env.example /k3s_conf/database.env
 vagrant up
 ```
 
-### TODO: setup workers, networking setup, env env variables to Django and Postgresql
+### TODO: setup workers, Nginx networking setup, add image hub
 
 
 ### Usefull commands
