@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 MY_HOST = "192.168.56.11"
@@ -80,10 +81,10 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "your_database_name",
-        "USER": "your_username",
-        "PASSWORD": "your_password",
-        "HOST": MY_HOST,  # set in docker-compose.yml
+        "NAME": os.environ.get('POSTGRES_DB'),
+        "USER": os.environ.get('POSTGRES_USER'),
+        "PASSWORD": os.environ.get('POSTGRES_PASSWORD'),
+        "HOST": "postgresql-service",  # set in docker-compose.yml
         "PORT": 5432,  # default postgres port
     }
 }

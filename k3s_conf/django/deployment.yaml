@@ -18,8 +18,12 @@ spec:
       - name: django
         image: my-django-app
         imagePullPolicy: Never # using local docker images
+        #imagePullPolicy: Always
         ports:
         - containerPort: 8000
+        envFrom:
+        - configMapRef:
+            name: postgres-config
         livenessProbe:
           httpGet:
             path: /health/

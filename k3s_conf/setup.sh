@@ -36,3 +36,6 @@ sudo chmod 644 /etc/rancher/k3s/k3s.yaml
 
 # Set the KUBECONFIG environment variable for the 'vagrant' user
 echo 'export KUBECONFIG=/home/vagrant/config' >> /home/vagrant/.bashrc
+
+#  create configmap
+kubectl create configmap postgres-config --from-env-file=/vagrant/k3s_conf/database.env
