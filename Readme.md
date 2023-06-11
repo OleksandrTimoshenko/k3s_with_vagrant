@@ -2,10 +2,11 @@
 
 ```
 cp ./k3s_conf/database.env.example /k3s_conf/database.env
+cp github.env.example github.env
 vagrant up
 ```
 
-### TODO: setup workers, Nginx networking setup, add image hub
+### TODO: setup workers
 
 
 ### Usefull commands
@@ -14,6 +15,7 @@ kubectl get pods
 kubectl logs django
 docker ps
 docker exec -it <id> bash
+kubectl describe pod <pod-name>
 ```
 
 ### Restart your pod (1)
