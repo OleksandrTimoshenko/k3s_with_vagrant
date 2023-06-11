@@ -16,9 +16,9 @@ spec:
     spec:
       containers:
       - name: django
-        image: my-django-app
-        imagePullPolicy: Never # using local docker images
-        #imagePullPolicy: Always
+        image: ghcr.io/oleksandrtimoshenko/django-app
+        #imagePullPolicy: Never # using local docker images
+        imagePullPolicy: Always
         ports:
         - containerPort: 8000
         envFrom:

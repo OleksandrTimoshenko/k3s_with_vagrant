@@ -1,5 +1,9 @@
 #!/bin/bash
 
+source /vagrant/github.env
+
+docker login -u "$GITHUB_USER" -p "$GITHUB_TOKEN" ghcr.io
+
 # Deploy Nginx
 kubectl apply -f /vagrant/k3s_conf/nginx/
 

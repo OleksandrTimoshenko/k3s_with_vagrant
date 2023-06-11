@@ -16,6 +16,8 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx:1.14.2
+        image: ghcr.io/oleksandrtimoshenko/nginx-app
         ports:
         - containerPort: 80
+        #imagePullPolicy: Never # using local docker images
+        imagePullPolicy: Always

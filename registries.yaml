@@ -1,0 +1,9 @@
+mirrors:
+  ghcr.io:
+    endpoint:
+      - "https://ghcr.io"
+configs:
+  ghcr.io:
+    auth:
+      username: GHCR_USERNAME
+      password: GHCR_PASSWORD
