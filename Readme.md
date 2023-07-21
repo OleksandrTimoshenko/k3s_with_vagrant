@@ -4,7 +4,7 @@
 cp ./k3s_conf/database.env.example /k3s_conf/database.env
 cp github.env.example github.env
 vagrant up
-go to http://127.0.0.1:81
+go to http://192.168.56.11:81
 ```
 
 ## Usefull commands
