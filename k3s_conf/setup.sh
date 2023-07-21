@@ -43,12 +43,6 @@ kubectl create configmap postgres-config --from-env-file=/vagrant/k3s_conf/datab
 # setup credentials for the ghcr.io
 logger "setup credentials for the ghcr.io"
 source /vagrant/github.env
-sed -i "s/GHCR_USERNAME/$GITHUB_USER/g" /vagrant/registries.yaml
-sed -i "s/GHCR_PASSWORD/$GITHUB_TOKEN/g" /vagrant/registries.yaml
 
-sudo cp /vagrant/registries.yaml /etc/rancher/k3s/registries.yaml
-
-sed -i "s/$GITHUB_USER/GHCR_USERNAME/g" /vagrant/registries.yaml
-sed -i "s/$GITHUB_TOKEN/GHCR_PASSWORD/g" /vagrant/registries.yaml
-
-sudo systemctl restart k3s
+# create secter with docker creds
+kubectl create secret docker-registry hub-info --docker-server=ghcr.io --docker-username=$GITHUB_USER --docker-password=$GITHUB_TOKEN

@@ -6,7 +6,6 @@ Vagrant.configure("2") do |config|
       master.vm.synced_folder "./django", "/vagrant/django", create: true
       master.vm.synced_folder "./nginx", "/vagrant/nginx", create: true
       master.vm.provision "file", source: "github.env", destination: "github.env"
-      master.vm.provision "file", source: "registries.yaml", destination: "registries.yaml"
       master.vm.provider "virtualbox" do |vb|
         vb.memory = "4048"
         vb.cpus = "4"
